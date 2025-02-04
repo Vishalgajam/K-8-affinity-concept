@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      security: S1
+  template:
+    metadata:
+      labels:
+        security: S1
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      nodeSelector:
+        node: ram
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      security: S2
+  template:
+    metadata:
+      labels:
+        security: S2
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      nodeSelector:
+        node: ram
