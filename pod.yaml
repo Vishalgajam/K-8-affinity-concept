@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-worker-pod
+  labels:
+    app: nginx-new
+spec:
+  nodeSelector:
+    app: nginx-new
+  containers:
+  - name: nginx
+    image: nginx
